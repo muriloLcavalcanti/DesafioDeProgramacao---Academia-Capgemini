@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Desafio 1.2</title>
+</head>
+
+<body>
+    <label>digite o valor:</label>
+    <input id="valor" />
+    <button>Gerar</button>
+    <div>
+        <pre id="escada"></pre>
+    </div>
+</body>
+<script>
+    document.querySelector("button").onclick = function gerarEscada() {
+        let n = document.getElementById("valor").value;
+
+        let bild = ''
+        let column = 0
+
+        for (let row = 1; row <= n; row++) {
+            column = 0
+            let caractere = ''
+            while (column < row) {
+                caractere += '*'
+                column++
+            }
+
+            column = 0
+            let space = ''
+            while (column < n - row) {
+                space += ' '
+                column++
+            }
+
+            bild += space + caractere + '<br/>'
+        }
+        return document.getElementById("escada").innerHTML = bild
+    }
+</script>
+
+</html>

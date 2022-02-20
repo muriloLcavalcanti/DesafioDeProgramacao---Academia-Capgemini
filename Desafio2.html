@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Desafio 2</title>
+</head>
+
+<body>
+    <Label>Digite a senha:</Label>
+    <input type="text" id="senha" name="senha">
+    <button onclick="validaSenha()">Enviar</button>
+    <br>
+    <div id="mensagem">
+        <h3>A senha deve conter ao menos:</h3>
+        <ul>
+            <li>uma letra maiúscula</li>
+            <li>uma letra minúscula</li>
+            <li>um dígito numérico</li>
+            <li>um caractere especial</li>
+        </ul>
+    </div>
+
+    <script>
+        function validaSenha() {
+            var senha = String(document.getElementById("senha").value);
+            var isLower = false
+            var isUpper = false
+            var isDigit = false
+            var isEspecial = false
+            var charEspecial = " \" ' \\ _ / | ! ? , . ; : > < @ # $ % ¨ ~ ^ ´ ` & * ( [ { } ] ) = - +  ° º ª"
+
+            for (let i = 0; i < senha.length; i++) {
+
+                // - VERIFICA SE O CARACTERE É MINUSCULO OU ESPECIAL 
+                for (let f = 0; f < charEspecial.length; f++) {
+                    if (senha[i] === senha[i].toLowerCase()) {
+
+                        if (senha[i] == charEspecial[f]) {
+                            isEspecial = true;
+                            console.log(`É especial? ${isEspecial}`)
+
+                        } else {
+                            isLower = true;
+                            console.log(`É minuscula? ${isLower}`)
+                        }
+                        break;
+                    }
+
+                }
+
+                // VERIFICA SE O CARACTERE É MAIÚSCULO
+                if (senha[i] == senha[i].toUpperCase()) {
+                    isUpper = true
+                    console.log(`É maiúscula? ${senha[i]} `)
+                }
+                
+                // VERIFICA SE O CARACTERE É NUMÉRICO
+                if (!isNaN(senha[i])) {
+                    isDigit = true
+                    console.log(`É numero? ${senha[i]} `)
+                }
+
+
+
+
+            }
+
+            var mensagem = ''
+
+            if (senha.length < 6) {
+                mensagem = alert("A senha deve conter ao menos 6 caracteres.");
+
+            } else {
+                if (!isLower) {
+                    mensagem = alert("Acrescente ao menos uma letra minúscula");
+                }
+                if (!isUpper) {
+                    mensagem = alert("Acrescente ao menos uma letra maiúscula");
+                }
+                if (!isDigit) {
+                    mensagem = alert("Acrescente ao menos um digito numérico");
+                }
+                if (!isEspecial) {
+                    mensagem = alert("Acrescente ao menos um caractere especial");
+                } else if (isLower && isUpper && isDigit && isEspecial) {
+                    mensagem = "senha aprovada"
+                    document.getElementById("mensagem").innerHTML = mensagem
+                }
+            }
+
+            console.log(`${isDigit} \ ${isUpper} \ ${isLower} \ ${isEspecial}`);
+        }
+
+
+    </script>
+
+</body>
+
+</html>

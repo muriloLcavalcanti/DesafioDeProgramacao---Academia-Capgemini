@@ -1,0 +1,44 @@
+<html>
+  <body>
+    <input type="text" id="palavra" name="palavra" />
+    <button onclick="getAnagramas()">Enviar</button>
+
+    <div id="msg"></div>
+  </body>
+
+  <script>
+    function getAnagramas() {
+      let palavra = String(document.getElementById("palavra").value);
+      let array = palavra.split("");
+      let substring = [];
+      let result = 0;
+
+      //Separa todas as combinações
+      let acc = "";
+      for (let i = 0; i < array.length; i++) {
+        for (let f = i; f < array.length; f++) {
+          acc += array[f].toLocaleLowerCase();
+          combinacao = acc.split("").sort().join("");
+          substring.push(combinacao);
+        }
+        acc = "";
+      }
+      
+      for (let i = 0; i < substring.length; i++) {
+        for (let f = i; f < substring.length; f++) {
+          if (i != f) {
+            if (substring[i] == substring[f]) {
+              console.log(`${substring[i]} - ${i} - ${f}`);
+              result++;
+            }
+          }
+        }
+      }
+      document.getElementById(
+        "msg"
+      ).innerHTML = `A quantidade de anagramas da palavra <b>${palavra}</b> é <b>${result}</b>`;
+    }
+  </script>
+
+  <html></html>
+</html>
