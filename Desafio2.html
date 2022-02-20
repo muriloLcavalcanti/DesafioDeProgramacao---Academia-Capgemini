@@ -28,44 +28,38 @@
             var isUpper = false
             var isDigit = false
             var isEspecial = false
-            var charEspecial = " \" ' \\ _ / | ! ? , . ; : > < @ # $ % ¨ ~ ^ ´ ` & * ( [ { } ] ) = - +  ° º ª"
+            var charEspecial = "\" ' \\ _ / | ! ? , . ; : > < @ # $ % ¨ ~ ^ ´ ` & * ( [ { } ] ) = - + ° º ª"
 
+
+            // VERIFICA SE O CARACTERE É NUMÉRICO
             for (let i = 0; i < senha.length; i++) {
-
-                // - VERIFICA SE O CARACTERE É MINUSCULO OU ESPECIAL 
-                for (let f = 0; f < charEspecial.length; f++) {
-                    if (senha[i] === senha[i].toLowerCase()) {
-
-                        if (senha[i] == charEspecial[f]) {
-                            isEspecial = true;
-                            console.log(`É especial? ${isEspecial}`)
-
-                        } else {
-                            isLower = true;
-                            console.log(`É minuscula? ${isLower}`)
-                        }
-                        break;
-                    }
-
-                }
-
-                // VERIFICA SE O CARACTERE É MAIÚSCULO
-                if (senha[i] == senha[i].toUpperCase()) {
-                    isUpper = true
-                    console.log(`É maiúscula? ${senha[i]} `)
-                }
-
-                // VERIFICA SE O CARACTERE É NUMÉRICO
                 if (!isNaN(senha[i])) {
                     isDigit = true
-                    console.log(`É numero? ${senha[i]} `)
+                    console.log(`1. ${senha[i]} `)
+                }
+                // - VERIFICA SE O CARACTERE É MINUSCULO
+                else if (senha[i] == senha[i].toLowerCase()) {
+                    isLower = true
+                    console.log(`2. ${senha[i]} `)
+                }
+                // VERIFICA SE O CARACTERE É MAIÚSCULO
+                else if (senha[i] == senha[i].toUpperCase()) {
+                    isUpper = true
+                    console.log(`3. ${senha[i]} `)
+                }
+                // - VERIFICA SE O CARACTERE É ESPECIAL
+                for (let f = 0; f < charEspecial.length; f++) {
+                    if (senha[i] == charEspecial[f]) {
+                        isEspecial = true;
+                        console.log(`4. ${senha[i]} `)
+                    }
                 }
             }
 
             var mensagem = ''
 
-            // Verifica se a senha contém todos os requisitos antes de printar
-            // Caso o(s) requisto(s) não seja(m) atendido(s), o alerta será disparado alertando e informando
+            // A partir deste trecho acontece a verificação de todos os critérios em conjunto
+            // Caso o(s) requisto(s) não seja(m) atendido(s), o alerta será disparado e informando o que falta
 
             // Verifica quantidade minima de caracteres
             if (senha.length < 6) {
@@ -86,8 +80,8 @@
                 // Verifica caracteres especiais
                 if (!isEspecial) {
                     mensagem = alert("Acrescente ao menos um caractere especial");
-                } 
-                // Se as condições forem verdadeiras uma mensagem será printa
+                }
+                // Se as condições forem verdadeiras uma mensagem de confirmação será printada
                 else if (isLower && isUpper && isDigit && isEspecial) {
                     mensagem = "senha aprovada"
                     document.getElementById("mensagem").innerHTML = mensagem
