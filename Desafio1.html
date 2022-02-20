@@ -16,19 +16,25 @@
 </body>
 <script>
     document.querySelector("button").onclick = function gerarEscada() {
+
+        // Entrada que informa a quantidade de "degraus" 
         let n = document.getElementById("valor").value;
 
         let bild = ''
         let column = 0
 
+        // Iteração que forma a estrutura da escada
         for (let row = 1; row <= n; row++) {
             column = 0
             let caractere = ''
+
+            // Iteração que adiciona sequenciamente o caractere "*"
             while (column < row) {
                 caractere += '*'
                 column++
             }
 
+            // Iteração que adiciona sequencialmente os espaços à esquerda 
             column = 0
             let space = ''
             while (column < n - row) {
@@ -36,9 +42,13 @@
                 column++
             }
 
+            // Atribuição dos valores iterados à variavel formam a "escada"
             bild += space + caractere + '<br/>'
         }
+
+        // Manipulação de DOM para printar a escada
         return document.getElementById("escada").innerHTML = bild
+
     }
 </script>
 
