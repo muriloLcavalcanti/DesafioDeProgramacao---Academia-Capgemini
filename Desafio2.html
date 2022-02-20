@@ -8,7 +8,7 @@
 
 <body>
     <Label>Digite a senha:</Label>
-    <input type="text" id="senha" name="senha">
+    <input type="password" id="senha" name="senha">
     <button onclick="validaSenha()">Enviar</button>
     <br>
     <div id="mensagem">
@@ -54,44 +54,48 @@
                     isUpper = true
                     console.log(`É maiúscula? ${senha[i]} `)
                 }
-                
+
                 // VERIFICA SE O CARACTERE É NUMÉRICO
                 if (!isNaN(senha[i])) {
                     isDigit = true
                     console.log(`É numero? ${senha[i]} `)
                 }
-
-
-
-
             }
 
             var mensagem = ''
 
+            // Verifica se a senha contém todos os requisitos antes de printar
+            // Caso o(s) requisto(s) não seja(m) atendido(s), o alerta será disparado alertando e informando
+
+            // Verifica quantidade minima de caracteres
             if (senha.length < 6) {
                 mensagem = alert("A senha deve conter ao menos 6 caracteres.");
-
             } else {
+                // Verifica minúsculas
                 if (!isLower) {
                     mensagem = alert("Acrescente ao menos uma letra minúscula");
                 }
+                // Verifica maiúsculas
                 if (!isUpper) {
                     mensagem = alert("Acrescente ao menos uma letra maiúscula");
                 }
+                // Verifica dígitos
                 if (!isDigit) {
                     mensagem = alert("Acrescente ao menos um digito numérico");
                 }
+                // Verifica caracteres especiais
                 if (!isEspecial) {
                     mensagem = alert("Acrescente ao menos um caractere especial");
-                } else if (isLower && isUpper && isDigit && isEspecial) {
+                } 
+                // Se as condições forem verdadeiras uma mensagem será printa
+                else if (isLower && isUpper && isDigit && isEspecial) {
                     mensagem = "senha aprovada"
                     document.getElementById("mensagem").innerHTML = mensagem
                 }
             }
-
+            // Verificação de código em desenvolvimento*
             console.log(`${isDigit} \ ${isUpper} \ ${isLower} \ ${isEspecial}`);
         }
-
 
     </script>
 
