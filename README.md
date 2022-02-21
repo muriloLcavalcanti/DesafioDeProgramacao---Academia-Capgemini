@@ -60,9 +60,9 @@ Quando todos os criterios forem atendidos, uma mensagem de confirmação irá ap
 Com a aplicação aberta no navegador, clique com o cursor dentro do campo de digitação (indicado pela seta verde).
 Depois clique no botão "enviar" (indicado pela seta vermelha):
 
-![](img/9.png)
+![](https://github.com/muriloLcavalcanti/DesafioDeProgramacao---Academia-Capgemini/blob/main/Img/9.png)
 
 
 A aplicação irá retornar a quantidade de anagramas presente na palavra:
 
-![](img/10.png)
+![](https://github.com/muriloLcavalcanti/DesafioDeProgramacao---Academia-Capgemini/blob/main/Img/10.png)
